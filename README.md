@@ -69,9 +69,9 @@ I recorded my notes in the incident so other engineers can understand how the in
 
 Based on the activities I performed, I would make recommendations to update our policies and tools. The recommendations I would make are:
 
--Implement an account lockout policy of 10 attempts.
--Harden the firewall/NSG to block remote login attempts from remote IP addresses we have not approved.
--Revise the KQL query to combine the brute force detection query and the brute force success query. This would help to reduce the number of tickets.
+-Implement an account lockout policy of 10 attempts.<br>
+-Harden the firewall/NSG to block remote login attempts from remote IP addresses we have not approved.<br>
+-Revise the KQL query to combine the brute force detection query and the brute force success query. This would help to reduce the number of tickets.<br>
 
 ## Closure
 I documented the results of our investigation and included it in the notes of the incident. The incident was then closed.
