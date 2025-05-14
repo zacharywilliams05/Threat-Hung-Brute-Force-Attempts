@@ -1,6 +1,6 @@
 # Threat Hunting - Brute Force Detection
 
-We will work this threat hunting scenario according to NIST 800-61 Incident Response Lifecycle.
+We will work this threat hunting scenario according to NIST 800-61 Incident Response Lifecycle. I will demonstrate using MS Azure, Sentinel, Defender, KQL, and threat hunting techniques to detect, analyze, containt, ereadicate, and recover from a brute force attack.
 
 ## Preparation
 In the preparation phase, we would do any work possible that sets up the organization to prevent a brute force attack. In this case, we are going to assume this is a young organization and has not been monitoring for this kind of attack previously. However, we have:
