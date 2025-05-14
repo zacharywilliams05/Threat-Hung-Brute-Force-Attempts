@@ -66,5 +66,5 @@ Implement an account lockout policy of 10 attempts.
 Harden the firewall/NSG to block remote login attempts from remote IP addresses we have not approved.
 Revise the KQL query to combine the brute force detection query and the brute force success query. This would help to reduce the number of tickets.
 
-##Closure
+## Closure
 I documented the results of our investigation and included it in the notes of the incident. The incident was then closed.
