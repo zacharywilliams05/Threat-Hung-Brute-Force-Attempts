@@ -25,14 +25,23 @@ DeviceLogonEvents
 KQL Explanation:
 This query filters log events in the DeviceLogonEvents table. Initially, it looks for any event with a "LogonFailed" result within the last 5 hours and orders them in descending order by Timestamp. Then it summarizes the data by counting the events where a RemoteIP tried to log into a specific DeviceName and presents any results where the EventCount is more than or equal to 20. Finally, it will present the results in order of EventCount.
 
+<img width="568" alt="Detection KQL Query" src="https://github.com/user-attachments/assets/07bcb9fd-4fee-481b-8b74-8d084fccb2ab" />
+
 Analyzing the data, we see several brute force attempts by RemoteIPs making a suspicious number of login attempts and failing. From this, we can conclude that remote attackers are indeed trying to brute force their way into our systems.
 
 Containment, Eradication, and Recovery
 Containment begins with building a rule to create an incident when evidence of a brute force attempt is found in the logs.
 
+<img width="690" alt="Containment Rule 1" src="https://github.com/user-attachments/assets/b92b7d17-9d61-4648-9dd5-139eb5be074d" />
+<img width="941" alt="Containment Rule 2" src="https://github.com/user-attachments/assets/f6eac283-d0c2-44c8-b711-cb3e21680c22" />
+
 In Microsoft Sentinel, I created a rule that utilizes the KQL query created in the Detection and Analysis phase. As this is a lab environment, I set the query to run every 4 hours, but in a live environment, we may have it run more or less often depending on the severity of the incoming attacks.
 
+<img width="1216" alt="Incident 1" src="https://github.com/user-attachments/assets/e834af73-a9e6-4fe3-9aa3-227dff49a729" />
+
 An incident is immediately created.
+
+<img width="677" alt="Incident 2" src="https://github.com/user-attachments/assets/0578698b-0b44-4d82-b45d-a4ffd151c21a" />
 
 I assign the ticket to myself, make it active, and view the endpoints of concern.
 
