@@ -27,7 +27,7 @@ This query filters log events in the DeviceLogonEvents table. Initially, it look
 
 <img width="568" alt="Detection KQL Query" src="https://github.com/user-attachments/assets/07bcb9fd-4fee-481b-8b74-8d084fccb2ab" />
 
-Analyzing the data, we see several brute force attempts by RemoteIPs making a suspicious number of login attempts and failing. From this, we can conclude that remote attackers are indeed trying to brute force their way into our systems.
+Analyzing the data, we see several brute force attempts by RemoteIPs making a suspicious number of login attempts and failing. From this, we can conclude that remote attackers are indeed trying to brute force their way into our systems.</br>
 
 ##Containment, Eradication, and Recovery
 Containment begins with building a rule to create an incident when evidence of a brute force attempt is found in the logs.
