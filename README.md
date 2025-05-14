@@ -55,11 +55,16 @@ DeviceLogonEvents
 
 In our case, for most of our devices no successful login attempts were found. One device however did have a successful brute force login so we need to quarantine that device to prevent further damage to the org. 
 
+<img width="1316" alt="Quarntine device" src="https://github.com/user-attachments/assets/67855ef0-6082-4f9a-a7ee-72470e0229e7" />
+
 Using Microsoft Defender, of which all of our end points are onboarded to by default, we can quarantine.
 
 From here we would investigate with the user and possibly rebuilt the VM if evidence of tampering by the attacker is found.
 
 ## Post-Incident Activities
+
+<img width="1589" alt="Comment and close" src="https://github.com/user-attachments/assets/9dce0d59-7084-4e2e-87b8-30554bcf180d" />
+
 I recorded my notes in the incident so other engineers can understand how the incident was handled.
 
 Based on the activities I performed, I would make recommendations to update our policies and tools. The recommendations I would make are:
