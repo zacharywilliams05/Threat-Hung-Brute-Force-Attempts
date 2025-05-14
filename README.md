@@ -51,11 +51,13 @@ We can now see remote attackers who tried to break into our machines, but we wan
 DeviceLogonEvents
 | where RemoteIP == "RemoteIPAddress" and DeviceName == "Hostname" and ActionType == "LogonSuccess"
 ```
+<img width="903" alt="LogonSuccess no results" src="https://github.com/user-attachments/assets/9a51434f-da91-45b9-82e5-e549141ef7e8" />
 
-KQL Explanation:
-This query filters log events in the DeviceLogonEvents table. Initially, it looks for any event with a "LogonFailed" result within the last 5 hours and orders them in descending order by Timestamp. Then it summarizes the data by counting the events where a RemoteIP tried to log into a specific DeviceName and presents any results where the EventCount is more than or equal to 20. Finally, it will present the results in order of EventCount.
+In our case, for most of our devices no successful login attempts were found. One device however did have a successful brute force login so we need to quarantine that device to prevent further damage to the org. 
 
-Analyzing the data, we see several brute force attempts by RemoteIPs making a suspicious number of login attempts and failing. From this, we can conclude that remote attackers are indeed trying to brute force their way into our systems.
+Using Microsoft Defender, of which all of our end points are onboarded to by default, we can quarantine.
+
+From here we would investigate with the user and possibly rebuilt the VM if evidence of tampering by the attacker is found.
 
 ## Post-Incident Activities
 I recorded my notes in the incident so other engineers can understand how the incident was handled.
