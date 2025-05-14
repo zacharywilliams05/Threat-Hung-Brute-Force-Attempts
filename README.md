@@ -29,7 +29,7 @@ This query filters log events in the DeviceLogonEvents table. Initially, it look
 
 Analyzing the data, we see several brute force attempts by RemoteIPs making a suspicious number of login attempts and failing. From this, we can conclude that remote attackers are indeed trying to brute force their way into our systems.
 
-##Containment, Eradication, and Recovery
+## Containment, Eradication, and Recovery
 Containment begins with building a rule to create an incident when evidence of a brute force attempt is found in the logs.
 
 <img width="690" alt="Containment Rule 1" src="https://github.com/user-attachments/assets/b92b7d17-9d61-4648-9dd5-139eb5be074d" />
@@ -56,28 +56,6 @@ KQL Explanation:
 This query filters log events in the DeviceLogonEvents table. Initially, it looks for any event with a "LogonFailed" result within the last 5 hours and orders them in descending order by Timestamp. Then it summarizes the data by counting the events where a RemoteIP tried to log into a specific DeviceName and presents any results where the EventCount is more than or equal to 20. Finally, it will present the results in order of EventCount.
 
 Analyzing the data, we see several brute force attempts by RemoteIPs making a suspicious number of login attempts and failing. From this, we can conclude that remote attackers are indeed trying to brute force their way into our systems.
-
-## Containment, Eradication, and Recovery
-Containment begins with building a rule to create an incident when evidence of a brute force attempt is found in the logs.
-
-In Microsoft Sentinel, I created a rule that utilizes the KQL query created in the Detection and Analysis phase. As this is a lab environment, I set the query to run every 4 hours, but in a live environment, we may have it run more or less often depending on the severity of the incoming attacks.
-
-An incident is immediately created.
-
-I assign the ticket to myself, make it active, and view the endpoints of concern.
-
-We can now see remote attackers who tried to break into our machines, but we want to know if they actually succeeded. To do this, we can query the remote attacker's IP address against the device name and filter for any successful logins. The KQL query for this looks like:
-
-```kql
-DeviceLogonEvents
-| where RemoteIP == "RemoteIPAddress" and DeviceName == "Hostname" and ActionType == "LogonSuccess"
-```
-
-In our case, for most of our devices, no successful login attempts were found. One device, however, did have a successful brute force login, so we need to quarantine that device to prevent further damage to the organization.
-
-Using Microsoft Defender, of which all of our endpoints are onboarded to by default, we can quarantine.
-
-From here, we would investigate with the user and possibly rebuild the VM if evidence of tampering by the attacker is found.
 
 ## Post-Incident Activities
 I recorded my notes in the incident so other engineers can understand how the incident was handled.
