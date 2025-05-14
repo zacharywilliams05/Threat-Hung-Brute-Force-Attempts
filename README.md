@@ -29,7 +29,7 @@ This query filters log events in the DeviceLogonEvents table. Initially, it look
 
 Analyzing the data, we see several brute force attempts by RemoteIPs making a suspicious number of login attempts and failing. From this, we can conclude that remote attackers are indeed trying to brute force their way into our systems.
 
-Containment, Eradication, and Recovery
+##Containment, Eradication, and Recovery
 Containment begins with building a rule to create an incident when evidence of a brute force attempt is found in the logs.
 
 <img width="690" alt="Containment Rule 1" src="https://github.com/user-attachments/assets/b92b7d17-9d61-4648-9dd5-139eb5be074d" />
@@ -57,7 +57,7 @@ This query filters log events in the DeviceLogonEvents table. Initially, it look
 
 Analyzing the data, we see several brute force attempts by RemoteIPs making a suspicious number of login attempts and failing. From this, we can conclude that remote attackers are indeed trying to brute force their way into our systems.
 
-Containment, Eradication, and Recovery
+##Containment, Eradication, and Recovery
 Containment begins with building a rule to create an incident when evidence of a brute force attempt is found in the logs.
 
 In Microsoft Sentinel, I created a rule that utilizes the KQL query created in the Detection and Analysis phase. As this is a lab environment, I set the query to run every 4 hours, but in a live environment, we may have it run more or less often depending on the severity of the incoming attacks.
@@ -79,7 +79,7 @@ Using Microsoft Defender, of which all of our endpoints are onboarded to by defa
 
 From here, we would investigate with the user and possibly rebuild the VM if evidence of tampering by the attacker is found.
 
-Post-Incident Activities
+##Post-Incident Activities
 I recorded my notes in the incident so other engineers can understand how the incident was handled.
 
 Based on the activities I performed, I would make recommendations to update our policies and tools. The recommendations I would make are:
@@ -87,5 +87,6 @@ Based on the activities I performed, I would make recommendations to update our 
 Implement an account lockout policy of 10 attempts.
 Harden the firewall/NSG to block remote login attempts from remote IP addresses we have not approved.
 Revise the KQL query to combine the brute force detection query and the brute force success query. This would help to reduce the number of tickets.
-Closure
+
+##Closure
 I documented the results of our investigation and included it in the notes of the incident. The incident was then closed.
